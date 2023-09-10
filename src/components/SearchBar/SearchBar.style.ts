@@ -31,7 +31,6 @@ export const Input = styled.input`
   outline: none;
   border-radius: 2rem;
 `
-
 export const Button = styled.button`
   all: unset;
   position: absolute;
