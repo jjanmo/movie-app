@@ -1,9 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
 import { FavoritesIcon, HomeIcon } from '@components/Icons'
-import * as S from './BottomBar.style'
+import * as S from './BottomNav.style'
 import { colors } from '@styles/theme'
 
-export default function BottomBar() {
+export default function BottomNav() {
   const { pathname } = useLocation()
 
   return (
