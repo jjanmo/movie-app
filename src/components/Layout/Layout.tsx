@@ -8,7 +8,6 @@ export default function Layout({ children }: PropsWithChildren) {
     <Container>
       <Main>
         {children}
-
         <BottomNav />
       </Main>
     </Container>

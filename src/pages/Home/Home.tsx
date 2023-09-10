@@ -1,5 +1,12 @@
 import Layout from '@components/Layout'
+import SearchBar from '@components/SearchBar'
 
 export default function Home() {
-  return <Layout>This is Home</Layout>
+  return (
+    <Layout>
+      <SearchBar onSubmit={() => {}} />
+      <section></section>
+      This is Home
+    </Layout>
+  )
 }

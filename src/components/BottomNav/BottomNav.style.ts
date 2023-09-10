@@ -10,7 +10,7 @@ export const Container = styled.nav`
 export const Links = styled.ul`
   display: flex;
   width: 100%;
-  height: 6rem;
+  height: 5.6rem;
   background: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
 `
 export const LinkItem = styled.li`

@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+  input{
+    box-sizing: border-box;
+  }
 `
 
 export default GlobalStyles
