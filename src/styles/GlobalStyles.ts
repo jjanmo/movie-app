@@ -10,12 +10,14 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
   a {
     color: inherit;
     text-decoration: none;
-  }
-  input{
-    box-sizing: border-box;
   }
 `
 
