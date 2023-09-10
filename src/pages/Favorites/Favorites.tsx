@@ -1,3 +1,5 @@
+import Layout from '@components/Layout'
+
 export default function Favorites() {
-  return <div>This is Favorites</div>
+  return <Layout>This is Favorites</Layout>
 }
