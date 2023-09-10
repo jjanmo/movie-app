@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     const getMovies = async () => {
-      const { Search } = await import('../../../public/dummy.json')
+      const { Search } = await import('../../dummy.json')
 
       setMovies(Search)
     }

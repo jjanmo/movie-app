@@ -6,6 +6,10 @@ const BOTTOM_NAV_HEIGHT = 56
 export const ContentWrapper = styled.section`
   height: calc(100vh - (${TOP_BAR_HEIGHT}px + ${BOTTOM_NAV_HEIGHT}px));
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 export const Content = styled.ul`
   width: 100%;
