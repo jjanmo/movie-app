@@ -51,7 +51,6 @@ export const Info = styled.div`
     }
   }
 `
-
 export const Container = styled.li`
   position: relative;
   width: 100%;
@@ -76,14 +75,16 @@ export const Container = styled.li`
     opacity: 1;
   }
 `
-
 export const FavoritesButton = styled.button`
   all: unset;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 5;
+  top: 0.8rem;
+  right: 0.8rem;
+  padding: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
   cursor: pointer;
+  z-index: 5;
 `
 export const Thumbnail = styled.img`
   position: absolute;
@@ -92,4 +93,12 @@ export const Thumbnail = styled.img`
   object-fit: cover;
   width: 100%;
   height: 100%;
+`
+export const EmptyThumbnail = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(254, 24, 118, 1) 0%, rgba(252, 114, 149, 1) 43%, rgba(255, 70, 76, 1) 100%);
 `

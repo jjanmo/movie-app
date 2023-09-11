@@ -2,6 +2,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { Movie } from '@store/type'
 import { colors } from '@styles/theme'
 import * as S from './MovieCard.style'
+import defaultThumbnail from '/default_image.png'
 
 interface Props extends Movie {
   favorite: boolean
@@ -24,7 +25,12 @@ export default function MovieCard(props: Props) {
         {favorite ? <AiFillStar size={28} color={colors.red02} /> : <AiOutlineStar size={28} color={colors.red02} />}
       </S.FavoritesButton>
 
-      <S.Thumbnail src={poster} alt="thumbnail" />
+      {poster === 'N/A' && (
+        <S.EmptyThumbnail>
+          <img src={defaultThumbnail} />
+        </S.EmptyThumbnail>
+      )}
+      {poster !== 'N/A' && <S.Thumbnail src={poster} alt="thumbnail" />}
 
       <S.Info>
         <div className="title">{title}</div>
