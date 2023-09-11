@@ -26,7 +26,7 @@ export default function useInfiniteMovies(search: string) {
   const movies = useMemo(() => {
     if (data) {
       const movies = data
-        .filter((item) => item.Response) //
+        .filter((item) => item.Response === 'True') //
         .reduce((acc, cur) => acc.concat(cur.Search), [] as Movie[])
 
       setMoviesStatus({
