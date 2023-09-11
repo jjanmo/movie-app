@@ -8,12 +8,4 @@ export const colors = {
   gray05: '#c2c2c2',
   red01: '#ed1919',
   red02: '#FF3D79',
-  pink01: '#df71d4',
-  pink02: '#ffa0cb',
-  blue01: '#5e77e9',
-  blue02: '#697dd7',
-  cyan: '#48fefe',
-  purple: '#b07fff',
-  green: '#71df88',
-  yellow: '#feff88',
 }
