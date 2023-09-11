@@ -12,10 +12,10 @@ export const ContentWrapper = styled.section`
 `
 export const Content = styled.ul`
   width: 100%;
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(2, 18rem);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 `
 

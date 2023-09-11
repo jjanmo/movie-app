@@ -23,7 +23,7 @@ const Container = styled.div`
 `
 const Main = styled.main`
   position: relative;
-  width: 42rem;
+  max-width: 42rem;
   height: 100vh;
   margin: 0 auto;
   background-color: ${colors.black};

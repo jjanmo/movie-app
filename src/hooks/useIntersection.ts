@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import throttle from 'lodash/throttle'
 
-// eslint-disable-next-line no-unused-vars
 type OnIntersection = (entries: IntersectionObserverEntry[], observer?: IntersectionObserver) => void
 interface Props {
   onIntersection: OnIntersection

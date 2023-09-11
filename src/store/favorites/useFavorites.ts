@@ -12,7 +12,7 @@ export default function useFavorites() {
       const removed = movies.filter((movie) => movie.imdbID !== selectedMovie.imdbID)
       setMovies(removed)
     } else {
-      setMovies((prev) => [...prev, selectedMovie])
+      setMovies((prev) => [selectedMovie, ...prev])
     }
   }
 
