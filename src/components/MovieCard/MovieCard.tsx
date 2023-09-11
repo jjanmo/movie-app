@@ -1,4 +1,5 @@
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
+import useFavorites from '@store/favorites/useFavorites'
 import { Movie } from '@store/type'
 import { colors } from '@styles/theme'
 import * as S from './MovieCard.style'
@@ -10,10 +11,10 @@ interface Props extends Movie {
 
 export default function MovieCard(props: Props) {
   const { imdbID, Title: title, Year: year, Type: type, Poster: poster, favorite } = props
+  const { toggleMovie } = useFavorites()
 
-  const handleClick = () => {
-    // TODO
-    // 해당 영화를 로컬스토리지에 추가 / 삭제
+  const handleClick = (movie: Movie) => () => {
+    toggleMovie(movie)
   }
 
   return (
@@ -21,7 +22,7 @@ export default function MovieCard(props: Props) {
       <S.TopDim />
       <S.BottomDim />
 
-      <S.FavoritesButton onClick={handleClick}>
+      <S.FavoritesButton onClick={handleClick(props)}>
         {favorite ? <AiFillStar size={28} color={colors.red02} /> : <AiOutlineStar size={28} color={colors.red02} />}
       </S.FavoritesButton>
 
