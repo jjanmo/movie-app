@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 
 export const keywordAtom = atom<string>({
-  key: 'searchKeyword',
+  key: '@searchKeyword',
   default: '',
 })
