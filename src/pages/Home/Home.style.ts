@@ -13,9 +13,15 @@ export const ContentWrapper = styled.section`
 `
 export const Content = styled.ul`
   width: 100%;
-  padding: 2rem 0 3rem;
+  padding: 2rem 0 1rem;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 18rem);
   gap: 2rem;
+`
+export const SpinnerWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
 `
