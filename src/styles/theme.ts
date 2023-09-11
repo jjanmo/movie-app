@@ -8,4 +8,5 @@ export const colors = {
   gray05: '#c2c2c2',
   red01: '#ed1919',
   red02: '#FF3D79',
+  pink: '#df71d4',
 }

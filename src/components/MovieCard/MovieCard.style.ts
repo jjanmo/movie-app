@@ -26,7 +26,7 @@ export const Info = styled.div`
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
   opacity: 0;
-  transition: bottom 0.3s 0.5s;
+  transition: bottom 0.3s 0.3s;
 
   & .title {
     margin-bottom: 1rem;

@@ -1,11 +1,9 @@
-import { colors } from '@styles/theme'
 import styled from 'styled-components'
-
-const TOP_BAR_HEIGHT = 60
-const BOTTOM_NAV_HEIGHT = 56
+import { BOTTOM_NAV_HEIGHT, TOP_SEARCH_BAR_HEIGHT } from '@styles/constants'
+import { colors } from '@styles/theme'
 
 export const ContentWrapper = styled.section`
-  height: calc(100vh - (${TOP_BAR_HEIGHT}px + ${BOTTOM_NAV_HEIGHT}px));
+  height: calc(100vh - (${TOP_SEARCH_BAR_HEIGHT}px + ${BOTTOM_NAV_HEIGHT}px));
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -14,7 +12,7 @@ export const ContentWrapper = styled.section`
 `
 export const Content = styled.ul`
   width: 100%;
-  padding: 2rem 0 1rem;
+  padding: 2rem 0;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 18rem);
