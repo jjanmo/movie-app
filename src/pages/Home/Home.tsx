@@ -7,9 +7,13 @@ import SearchBar from '@components/SearchBar'
 import MovieCard from '@components/MovieCard'
 import Spinner from '@components/Icons/Spinner'
 import * as S from './Home.style'
+import * as CS from '../common.style'
+import useFavorites from '@store/favorites/useFavorites'
 
 export default function Home() {
   const { keyword } = useKeyword()
+  const { isFavoritedMovie } = useFavorites()
+
   const { movies, setPage, moviesStatus, isLoading } = useInfiniteMovies(keyword)
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false)
 
@@ -44,12 +48,12 @@ export default function Home() {
     <Layout>
       <SearchBar />
 
-      <S.ContentWrapper>
+      <CS.ContentWrapper>
         {isInitial && (
-          <S.Notice>
+          <CS.Notice>
             상단의 검색창에서 영화를
             <br /> 검색할 수 있습니다.
-          </S.Notice>
+          </CS.Notice>
         )}
 
         {isLoading && (
@@ -61,16 +65,16 @@ export default function Home() {
         {hasResult && (
           <>
             {keyword && <S.Keyword>검색키워드 : {keyword}</S.Keyword>}
-            {isEmpty && <S.Notice>검색 결과가 없습니다</S.Notice>}
+            {isEmpty && <CS.Notice>검색 결과가 없습니다</CS.Notice>}
 
             {!isEmpty && (
               <>
-                <S.Content>
+                <CS.Content>
                   {movies.map((movie) => (
-                    <MovieCard key={movie.imdbID} {...movie} favorite={false} />
+                    <MovieCard key={movie.imdbID} {...movie} favorite={isFavoritedMovie(movie.imdbID)} />
                   ))}
                   <div ref={target}></div>
-                </S.Content>
+                </CS.Content>
 
                 {shouldLoadMore && (
                   <S.MoreLoader>
@@ -81,7 +85,7 @@ export default function Home() {
             )}
           </>
         )}
-      </S.ContentWrapper>
+      </CS.ContentWrapper>
     </Layout>
   )
 }
