@@ -4,42 +4,67 @@ import { Movie } from '@store/type'
 import { colors } from '@styles/theme'
 import * as S from './MovieCard.style'
 import defaultThumbnail from '/default_image.png'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { createPortal } from 'react-dom'
+import Modal from '@components/Modal'
 
-interface Props extends Movie {
+interface Props {
+  movie: Movie
   favorite: boolean
 }
 
-export default function MovieCard(props: Props) {
-  const { imdbID, Title: title, Year: year, Type: type, Poster: poster, favorite } = props
-  const { toggleMovie } = useFavorites()
+export default function MovieCard({ movie, favorite }: Props) {
+  const { imdbID, Title, Year, Type, Poster } = movie
 
-  const handleClick = (movie: Movie) => () => {
-    toggleMovie(movie)
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const handleToggleModal = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation()
+    setShowModal((prev) => !prev)
   }
 
+  const { toggleMovie, removeMovie } = useFavorites()
+  const handleToggleMovie = (movie: Movie) => () => {
+    toggleMovie(movie)
+  }
+  const handleRemoveMovie = (id: string) => () => {
+    removeMovie(id)
+  }
+
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
   return (
-    <S.Container key={imdbID}>
-      <S.TopDim />
-      <S.BottomDim />
+    <>
+      <S.Container>
+        <S.TopDim />
+        <S.BottomDim />
 
-      <S.FavoritesButton onClick={handleClick(props)}>
-        {favorite ? <AiFillStar size={28} color={colors.red02} /> : <AiOutlineStar size={28} color={colors.red02} />}
-      </S.FavoritesButton>
+        <S.FavoritesButton onClick={isHome ? handleToggleMovie(movie) : handleToggleModal}>
+          {favorite ? <AiFillStar size={28} color={colors.red02} /> : <AiOutlineStar size={28} color={colors.red02} />}
+        </S.FavoritesButton>
 
-      {poster === 'N/A' && (
-        <S.EmptyThumbnail>
-          <img src={defaultThumbnail} />
-        </S.EmptyThumbnail>
-      )}
-      {poster !== 'N/A' && <S.Thumbnail src={poster} alt="thumbnail" />}
+        {Poster === 'N/A' && (
+          <S.EmptyThumbnail>
+            <img src={defaultThumbnail} />
+          </S.EmptyThumbnail>
+        )}
+        {Poster !== 'N/A' && <S.Thumbnail src={Poster} alt="thumbnail" />}
 
-      <S.Info>
-        <div className="title">{title}</div>
-        <div className="row">
-          <span className="year">{year}</span>
-          <span className="type">{type}</span>
-        </div>
-      </S.Info>
-    </S.Container>
+        <S.Info>
+          <div className="title">{Title}</div>
+          <div className="row">
+            <span className="year">{Year}</span>
+            <span className="type">{Type}</span>
+          </div>
+        </S.Info>
+      </S.Container>
+
+      {showModal &&
+        createPortal(
+          <Modal movieTitle={Title} onRemove={handleRemoveMovie(imdbID)} onCancel={handleToggleModal} />,
+          document.querySelector('main') as HTMLElement
+        )}
+    </>
   )
 }

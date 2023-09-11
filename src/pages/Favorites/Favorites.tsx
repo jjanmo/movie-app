@@ -20,7 +20,7 @@ export default function Favorites() {
         {hasResult && (
           <CS.Content>
             {movies.map((movie) => (
-              <MovieCard key={movie.imdbID} {...movie} favorite />
+              <MovieCard key={movie.imdbID} movie={movie} favorite />
             ))}
           </CS.Content>
         )}

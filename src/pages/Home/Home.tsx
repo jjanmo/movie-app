@@ -71,7 +71,7 @@ export default function Home() {
               <>
                 <CS.Content>
                   {movies.map((movie) => (
-                    <MovieCard key={movie.imdbID} {...movie} favorite={isFavoritedMovie(movie.imdbID)} />
+                    <MovieCard key={movie.imdbID} movie={movie} favorite={isFavoritedMovie(movie.imdbID)} />
                   ))}
                   <div ref={target}></div>
                 </CS.Content>
