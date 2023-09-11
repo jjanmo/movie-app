@@ -3,7 +3,7 @@ import { colors } from '@styles/theme'
 
 export const Keyword = styled.h2`
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 2rem 0 1rem;
   font-size: 2rem;
   text-align: center;
   color: ${colors.white};

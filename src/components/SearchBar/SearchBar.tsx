@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
+import useKeyword from '@store/search/useKeyword'
 import { colors } from '@styles/theme'
 import * as S from './SearchBar.style'
-import useKeyword from '@store/search/useKeyword'
 
 export default function SearchBar() {
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+
   const [value, setValue] = useState<string>('')
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
@@ -17,21 +20,20 @@ export default function SearchBar() {
     e.preventDefault()
     if (!value) return
 
+    if (pathname !== '/') navigate('/')
+
     setValue('')
     setKeyword(value)
   }
 
-  useEffect(() => {
-    return () => {
-      setValue('')
-      resetKeyword()
-    }
-  }, [resetKeyword])
+  const handleClickLogo = () => {
+    resetKeyword()
+  }
 
   return (
     <S.Container>
       <S.LogoContainer>
-        <Link to="/">
+        <Link to="/" onClick={handleClickLogo}>
           <img src="/logo.png" />
         </Link>
       </S.LogoContainer>
