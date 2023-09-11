@@ -14,6 +14,6 @@ export const useMoviesBySearch = ({ search, page }: { search: string; page: numb
 
 export interface MoviesSearchResponse {
   Search: Movie[]
-  totalResults: string
-  Response: boolean
+  totalResults: string // 실제 값이 string 으로 들어옴(문서상 number)
+  Response: 'True' | 'False' // 실제 값이 string 으로 들어옴(문서상 boolean)
 }
