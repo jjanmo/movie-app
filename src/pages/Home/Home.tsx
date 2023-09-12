@@ -3,7 +3,6 @@ import useIntersection from '@hooks/useIntersection'
 import useInfiniteMovies from '@hooks/useInfiniteMovies'
 import useKeyword from '@store/search/useKeyword'
 import Layout from '@components/Layout'
-import SearchBar from '@components/SearchBar'
 import MovieCard from '@components/MovieCard'
 import Spinner from '@components/Icons/Spinner'
 import * as S from './Home.style'
@@ -46,8 +45,6 @@ export default function Home() {
 
   return (
     <Layout>
-      <SearchBar />
-
       <CS.ContentWrapper>
         {isInitial && (
           <CS.Notice>

@@ -2,11 +2,14 @@ import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import BottomNav from '@components/BottomNav'
 import { colors } from '@styles/theme'
+import SearchBar from '@components/SearchBar'
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <Container>
       <Main>
+        <SearchBar />
+
         {children}
 
         <BottomNav />

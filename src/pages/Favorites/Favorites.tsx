@@ -1,6 +1,5 @@
 import useFavorites from '@store/favorites/useFavorites'
 import Layout from '@components/Layout'
-import SearchBar from '@components/SearchBar'
 import MovieCard from '@components/MovieCard'
 import * as CS from '../common.style'
 import * as S from './Favorites.style'
@@ -12,8 +11,6 @@ export default function Favorites() {
 
   return (
     <Layout>
-      <SearchBar />
-
       <CS.ContentWrapper>
         <S.Title>내 즐겨찾기</S.Title>
 
