@@ -25,6 +25,7 @@ export default function useFavorites() {
 
   return {
     movies,
+    setMovies,
     toggleMovie,
     removeMovie,
     resetMovies,
