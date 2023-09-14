@@ -9,12 +9,12 @@ import { useLocation } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import Modal from '@components/Modal'
 
-interface Props {
+export interface MovieCardProps {
   movie: Movie
   favorite: boolean
 }
 
-export default function MovieCard({ movie, favorite }: Props) {
+export default function MovieCard({ movie, favorite }: MovieCardProps) {
   const { imdbID, Title, Year, Type, Poster } = movie
 
   const [showModal, setShowModal] = useState<boolean>(false)

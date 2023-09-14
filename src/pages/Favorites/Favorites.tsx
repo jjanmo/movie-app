@@ -1,32 +1,27 @@
+import { DndContext, DragEndEvent } from '@dnd-kit/core'
+import { SortableContext, arrayMove } from '@dnd-kit/sortable'
 import useFavorites from '@store/favorites/useFavorites'
 import Layout from '@components/Layout'
-import MovieCard from '@components/MovieCard'
+import { SortableMovieCard } from '@components/MovieCard'
 import * as CS from '../common.style'
 import * as S from './Favorites.style'
-import { DragDropContext, Draggable, DropResult, Droppable } from 'react-beautiful-dnd'
-import { Movie } from '@store/type'
 
 export default function Favorites() {
   const { movies, setMovies } = useFavorites()
 
   const hasResult = movies.length > 0
 
-  const reorder = (list: Movie[], startIndex: number, endIndex: number) => {
-    const result = [...list]
-    const [removed] = result.splice(startIndex, 1)
-    result.splice(endIndex, 0, removed)
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event
 
-    return result
-  }
+    if (!over) return
+    if (active.id !== over?.id) {
+      const oldIndex = movies.findIndex((movie) => movie.id === active.id)
+      const newIndex = movies.findIndex((movie) => movie.id === over.id)
 
-  const onDragEnd = (result: DropResult) => {
-    const { source, destination } = result
-
-    if (!destination) return
-    if (source.droppableId === destination.droppableId && source.index === destination.index) return
-
-    const reordered = reorder(movies, source.index, destination.index)
-    setMovies(reordered)
+      const reordered = arrayMove(movies, oldIndex, newIndex)
+      setMovies(reordered)
+    }
   }
 
   return (
@@ -35,24 +30,15 @@ export default function Favorites() {
         <S.Title>내 즐겨찾기</S.Title>
 
         {hasResult && (
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="favorites-list">
-              {(provided) => (
-                <CS.Content ref={provided.innerRef} {...provided.droppableProps}>
-                  {movies.map((movie, index) => (
-                    <Draggable key={movie.imdbID} draggableId={movie.imdbID} index={index}>
-                      {(provided) => (
-                        <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
-                          <MovieCard movie={movie} favorite />
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </CS.Content>
-              )}
-            </Droppable>
-          </DragDropContext>
+          <DndContext onDragEnd={handleDragEnd}>
+            <SortableContext items={movies}>
+              <CS.Content>
+                {movies.map((movie) => (
+                  <SortableMovieCard key={movie.id} movie={movie} favorite />
+                ))}
+              </CS.Content>
+            </SortableContext>
+          </DndContext>
         )}
 
         {!hasResult && <CS.Notice>즐겨찾기한 영화가 없습니다.</CS.Notice>}
