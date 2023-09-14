@@ -1,4 +1,4 @@
-import { DndContext, DragEndEvent } from '@dnd-kit/core'
+import { DndContext, DragEndEvent, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { SortableContext, arrayMove } from '@dnd-kit/sortable'
 import useFavorites from '@store/favorites/useFavorites'
 import Layout from '@components/Layout'
@@ -24,13 +24,20 @@ export default function Favorites() {
     }
   }
 
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 10,
+    },
+  })
+  const sensors = useSensors(mouseSensor)
+
   return (
     <Layout>
       <CS.ContentWrapper>
         <S.Title>내 즐겨찾기</S.Title>
 
         {hasResult && (
-          <DndContext onDragEnd={handleDragEnd}>
+          <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
             <SortableContext items={movies}>
               <CS.Content>
                 {movies.map((movie) => (

@@ -25,5 +25,4 @@ export default function SortableMovieCard(props: MovieCardProps) {
 export const Container = styled.div<{ $isDragging: boolean }>`
   cursor: ${({ $isDragging }) => ($isDragging ? 'grabbing' : 'grab')};
   opacity: ${({ $isDragging }) => ($isDragging ? '0.7' : '1')};
-  transform: ${({ $isDragging }) => ($isDragging ? 'scale(1.05)' : 'scale(1)')};
 `
