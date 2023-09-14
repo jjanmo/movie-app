@@ -7,21 +7,21 @@ export default function useFavorites() {
   const resetMovies = useResetRecoilState(favoritesAtom)
 
   const toggleMovie = (selectedMovie: Movie) => {
-    const findedMovie = movies.find((movie) => movie.imdbID === selectedMovie.imdbID)
+    const findedMovie = movies.find((movie) => movie.id === selectedMovie.imdbID)
     if (findedMovie) {
-      const removed = movies.filter((movie) => movie.imdbID !== selectedMovie.imdbID)
+      const removed = movies.filter((movie) => movie.id !== selectedMovie.imdbID)
       setMovies(removed)
     } else {
-      setMovies((prev) => [selectedMovie, ...prev])
+      setMovies((prev) => [{ ...selectedMovie, id: selectedMovie.imdbID }, ...prev])
     }
   }
 
   const removeMovie = (id: string) => {
-    const removed = movies.filter((movie) => movie.imdbID !== id)
+    const removed = movies.filter((movie) => movie.id !== id)
     setMovies(removed)
   }
 
-  const isFavoritedMovie = (id: string) => !!movies.find((movie) => movie.imdbID === id)
+  const isFavoritedMovie = (id: string) => !!movies.find((movie) => movie.id === id)
 
   return {
     movies,
