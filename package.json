@@ -1,5 +1,5 @@
 {
-  "name": "grip-react-yangchanmo",
+  "name": "movie-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -36,5 +36,6 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
-  }
+  },
+  "packageManager": "yarn@4.4.0"
 }
