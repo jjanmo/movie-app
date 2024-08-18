@@ -1,7 +1,5 @@
 # Movie App
 
-> from Grip_React_YangChanMo
-
 ## Install & Start
 
 ```
